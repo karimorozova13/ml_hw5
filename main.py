@@ -49,3 +49,30 @@ model_kmn  = KMeans(n_clusters=k_best, random_state=42).fit(X)
 
 
 labels_kmn = pd.Series(model_kmn.labels_, name='k-means')
+
+concrete['Cluster'] = labels_kmn
+
+# %%
+report = concrete.groupby('Cluster').median()
+
+# %%
+cluster_counts = concrete['Cluster'].value_counts().sort_index()
+report['Count'] = cluster_counts
+
+report.head()
+
+# %%
+print(report.to_string())
+print("\n" + "-"*40 + "\n")
+
+for i, row in report.iterrows():
+    print(f'Cluster {i}:')
+    print(row.to_string())
+    print("\n" + "-"*40 + "\n")
+
+
+
+
+
+
+
