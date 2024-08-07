@@ -69,10 +69,3 @@ for i, row in report.iterrows():
     print(f'Cluster {i}:')
     print(row.to_string())
     print("\n" + "-"*40 + "\n")
-
-
-
-
-
-
-
